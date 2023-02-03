@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct ContentView: View {
     let nValues = [10, 20, 50, 100, 200, 500, 10000, 20000, 50000]
@@ -15,6 +16,13 @@ struct ContentView: View {
         VStack {
             ForEach(nValues, id: \.self) { n in
                 MonteCarloIntegrationView(n: n, exactAnswer: self.exactAnswer)
+            }
+            Text("Error vs N Value")
+                .font(.largeTitle)
+            HStack {
+                PointMark(N: nValues, Error: error)
+                    .frame(width: 300, height: 300)
+                    .padding()
             }
         }
     }
@@ -48,7 +56,6 @@ struct MonteCarloIntegrationView: View {
         }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
