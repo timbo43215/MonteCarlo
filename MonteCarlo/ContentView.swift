@@ -17,13 +17,6 @@ struct ContentView: View {
             ForEach(nValues, id: \.self) { n in
                 MonteCarloIntegrationView(n: n, exactAnswer: self.exactAnswer)
             }
-            Text("Error vs N Value")
-                .font(.largeTitle)
-            HStack {
-                PointMark(N: nValues, Error: error)
-                    .frame(width: 300, height: 300)
-                    .padding()
-            }
         }
     }
 }
